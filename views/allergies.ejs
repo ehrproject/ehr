@@ -50,12 +50,13 @@
 		fill: solid;
 		background: #24345E;
 		color: white;
+		padding-right: 0px !important;
 	}
 	.basicInfo {
 		padding-left: 30px;
 		padding-right: 40px;
 		padding-top: 66px;
-		padding-bottom: 100px; 
+		padding-bottom: 30%; 
 	}
 	.basicInfo p {
 		margin-bottom: 10px;
@@ -109,6 +110,16 @@
 			margin-top: 20px;
 			margin-right: 2.3%;
 		}
+		.current {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			margin-bottom: 10px;
+		}
+		.links {
+			background-color: #3D5982;
+		}
 
 
 	</style>
@@ -138,30 +149,31 @@
 					<div class = "sidebar sticky " >
 						<div class = "basicInfo"> 
 							<h2 id = "name">  </h2>
-<br>
+							<br>
 							<p id="ageSex"></p>
 							<p id="dob"></p>
-							<p id="weight"></p>
-							<p id="height"></p>
+							<p id="heightWeight"></p>
+							<br>
 							<p id="allergiesSide"></p>
 
 						</div>
+						<div class="links">
+							<ul class="nav nav-pills nav-stacked links">
+								<li class="active current">
+									<a href="allergies">Allergies</a></li>
+									<li><a href="patientPage">Patient Summary</a></li>
+									<li><a href="#section2">Social History</a></li>
+									<li><a href="problemList">Problem List</a></li>
+									<li><a href="#section4">Immunization Record</a></li>
+									<li><a href="#section3">Well Child Check</a></li>
+									<li><a href="#section5">Testing</a></li>
+									<li><a href="#section6">Growth Charts</a></li>
+									<li><a href="#section7">Nurse Notes</a></li>
+									<li><a href="#section8">Scans</a></li>
+								</li>
 
-						<ul class="nav nav-pills nav-stacked links">
-							<li class="active">
-								<a href="patientPage">Patient Summary</a></li>
-								<li><a href="#section2">Social History</a></li>
-								<li><a href="problemList">Problem List</a></li>
-								<li><a href="allergies">Allergies</a></li>
-								<li><a href="#section4">Immunization Record</a></li>
-								<li><a href="#section3">Well Child Check</a></li>
-								<li><a href="#section5">Testing</a></li>
-								<li><a href="#section6">Growth Charts</a></li>
-								<li><a href="#section7">Nurse Notes</a></li>
-								<li><a href="#section8">Scans</a></li>
-							</li>
-
-						</ul>
+							</ul>
+						</div>
 					</div>
 				</nav>
 				<div class="col-lg">   
@@ -254,12 +266,11 @@
 
 			$(document).ready(function(){
 
-
+				// Make sidebar sticky
 				var elements = document.querySelectorAll('.sticky');
 				Stickyfill.add(elements);
+
             // Initial Page Load
-
-
             $.ajax({
             	type: 'POST',
             	url: '/getPatientKeys',
@@ -275,7 +286,7 @@
 
 
             $('#allergyForm').hide();
-
+            // Respond to submission of allergy form
             $('#allergyForm').on('submit', function(event) {
             	event.preventDefault();
             	console.log("on submit");
@@ -301,7 +312,7 @@
             });
 
 
-
+            // Show and hide buttons on click
             $('#addAllergy').click(function() {
             	$('#addAllergy').hide();
             	$('#allergyForm').show();
@@ -309,7 +320,9 @@
             });
 
         });
-			var updateAllergyCard = function(allergies) { 
+// Updates allergy card after form submission
+var updateAllergyCard = function(allergies) { 
+				// dummy variable for temporary data
 				var allergies = [{allergen: 'peanut', severity: 'mild', reaction: 'throat closure', onsent: '12-08-2009', notes: 'avoid tree nuts in general, especially almonds'}];
 
 				$('#allergyContainer').empty();
@@ -326,93 +339,63 @@
 			}
 
 
-
-			var getPatientData = function(patient) {
-				var temp = patient;
-				var medication = [{name: 'Cetirizine', dose: '100 mg', time: 'daily 8 am', route: 'PO', start: '1-12-2017', end: '1-12-2019', duration: "2 years"}, {name: 'Cetaphyl', dose: '200 mg', time: 'daily 9 am', route: 'PO', start: '1-12-2016', end: '1-12-2019', duration: "2 years"}];
-
-				var allergies = [{allergen: 'dairy', severity: 'Mild', note: 'Avoid diary products'}]
-
-
-				var acute = [{diagnosis: 'fungal infection', treatment: 'Ketanocozole', dose: '1 cc propanol', time: 'BID', route: 'Topical', start: '1-12-2017', end: '1-12-2019', duration: "1 month"}];
-
+// Displays the patient's data on page
+var getPatientData = function(patient) {
+	var temp = patient;
+				// temporary data
 				var allergies = [{allergen: 'peanut', severity: 'mild', reaction: 'throat closure', onsent: '12-08-2009', notes: 'avoid tree nuts in general, especially almonds'}];
 				console.log('here:' + patient);
+
 				var cards = "";
 				var date = new Date(2018,2,12);
 				var i = 1;
 				var patient = patient[i];
+
+				// Update sidebar content
 				$('#name').text(patient.firstName + ' ' + patient.lastName);
  	$('#ageSex').text(getAge(patient.birthdate) + ', ' + 'F' ); //paitient.sex
- 	$('#dob').text(patient.birthdate); //paitient.sex
- 	$('#weight').text(patient.weight + " kgs");
- 	 	$('#height').text(patient.height + " cm"); //paitient.sex
- 	 	$('#allergiesSide').text('Allergies: ' + allergies[0].allergen );
+ 	$('#dob').text(patient.birthdate);
+ 	$('#heightWeight').text(patient.height + " cm, " + patient.weight + " kgs");
+ 	$('#allergiesSide').text('Allergies: ' + allergies[0].allergen );
+
+
+// Update allergies content
+var allergiesCard = '<div class="box">' +
+'<div class="row"><div class="col-sm">' + allergies[0].allergen + 
+'</div><div class="col-sm">' + allergies[0].reaction +
+'</div> <div class="col-sm">' + allergies[0].severity + 
+'</div> <div class="col-sm">' + allergies[0].onsent +
+'</div> <div class="col-sm ">' + allergies[0].notes +
+'</div></div>' ;
 
 
 
- 	 	var allergiesCard = '<div class="box">' +
- 	 	'<div class="row"><div class="col-sm">' + allergies[0].allergen + 
- 	 	'</div><div class="col-sm">' + allergies[0].reaction +
- 	 	'</div> <div class="col-sm">' + allergies[0].severity + 
- 	 	'</div> <div class="col-sm">' + allergies[0].onsent +
- 	 	'</div> <div class="col-sm ">' + allergies[0].notes +
- 	 	'</div></div>' ;
+$('#allergyContainer').append(allergiesCard);
 
+}
 
+ 	 				// Calculates age of patient in years, months, weeks, and days
+ 	 				function getAge(fromdate, todate){
+ 	 					if(todate) todate= new Date(todate);
+ 	 					else todate= new Date();
 
- 	 	$('#allergyContainer').append(allergiesCard);
+ 	 					var age= [], fromdate= new Date(fromdate),
+ 	 					y= [todate.getFullYear(), fromdate.getFullYear()],
+ 	 					ydiff= y[0]-y[1],
+ 	 					m= [todate.getMonth() + 1, fromdate.getMonth()],
+ 	 					mdiff= m[0]-m[1],
+ 	 					d= [todate.getDate(), fromdate.getDate()],
+ 	 					ddiff= d[0]-d[1];
 
- 	 }
-
-/*
-
-  var chronicCard = '<div class="box">' +
-  '<div class="row"><div class="col-sm">' + chronic[0].diagnosis + 
-  '</div> <div class="col-sm">' + chronic[0].treatment + 
-  '</div> <div class="col-sm">' + chronic[0].dose + 
-  '</div> <div class="col-sm">' + chronic[0].time +
-  '</div> <div class="col-sm">' + chronic[0].route +
-  '</div> <div class="col-sm">' + chronic[0].start +
-  '</div> <div class="col-sm">' + chronic[0].end +
-  '</div> <div class="col-sm">' + chronic[0].duration + '</div></div>' ;
-  
-
-
-  $('#chronicProb').append(chronicCard);
-};
-*/
-
-
-
-
-
-                   //   document.getElementById('patientCards').innerHTML = cards;
-
-
-
-
-                   function getAge(fromdate, todate){
-                   	if(todate) todate= new Date(todate);
-                   	else todate= new Date();
-
-                   	var age= [], fromdate= new Date(fromdate),
-                   	y= [todate.getFullYear(), fromdate.getFullYear()],
-                   	ydiff= y[0]-y[1],
-                   	m= [todate.getMonth() + 1, fromdate.getMonth()],
-                   	mdiff= m[0]-m[1],
-                   	d= [todate.getDate(), fromdate.getDate()],
-                   	ddiff= d[0]-d[1];
-
-                   	if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
-                   	if(mdiff<0) mdiff+= 12;
-                   	if(ddiff<0){
-                   		fromdate.setMonth(m[1]+1, 0);
-                   		ddiff= fromdate.getDate()-d[1]+d[0];
-                   		--mdiff;
-                   	}
-                   	w = Math.floor(ddiff/7);
-                   	ddiff = ddiff % 7;
+ 	 					if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
+ 	 					if(mdiff<0) mdiff+= 12;
+ 	 					if(ddiff<0){
+ 	 						fromdate.setMonth(m[1]+1, 0);
+ 	 						ddiff= fromdate.getDate()-d[1]+d[0];
+ 	 						--mdiff;
+ 	 					}
+ 	 					w = Math.floor(ddiff/7);
+ 	 					ddiff = ddiff % 7;
                   // 3 or older -> show year
                   if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
                   else if (ydiff> 0) {
