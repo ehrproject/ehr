@@ -50,13 +50,20 @@
     fill: solid;
     background: #24345E;
     color: white;
+    padding-right: 0px !important;
+
   }
   .basicInfo {
     padding-left: 30px;
     padding-right: 40px;
     padding-top: 66px;
-    padding-bottom: 100px; 
+    padding-bottom: 30%; 
   }
+  .basicInfo p {
+    margin-bottom: 10px;
+    line-height: 100%;
+  }
+
   .active {
   }
   .links {
@@ -89,6 +96,29 @@
       top: 5px;
       right:10px;
     }
+
+    .current {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      margin-bottom: 10px;
+    }
+    .links {
+      background-color: #3D5982;
+    }
+
+    .current {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      margin-bottom: 10px;
+    }
+    .links {
+      background-color: #3D5982;
+    }
+
   </style>
   <title>Patient Search</title>
 
@@ -108,7 +138,8 @@
 
 
 </head>
-<body> 
+<body style="background-color: #E1EBF2;"> 
+
   <div class="background">
 
     <div class="sidebarContainer">
@@ -116,110 +147,111 @@
         <nav class="col-sm-2 sidebar">
           <div class = "sidebar sticky " >
             <div class = "basicInfo"> 
-              <h2 id = "name"> Patient Name </h2>
-
-              <p id="ageDOB"> Age: ###, DOB: ##-##-####</p>
-              <p id="sexWH"> Female, ###.# kg, ### cm </p>
-              <p id="allergiesSide"> Shellfish </p>
+              <h2 id = "name">  </h2>
+              <br>
+              <p id="ageSex"></p>
+              <p id="dob"></p>
+              <p id="heightWeight"></p>
+              <br>
+              <p id="allergiesSide"></p>
 
             </div>
-
-            <ul class="nav nav-pills nav-stacked links">
-              <li class="active">
+            <div class="links">
+              <ul class="nav nav-pills nav-stacked links">
+                <li class="active current">
                  <a href="patientPage">Patient Summary</a></li>
-                <li><a href="#section2">Social History</a></li>
-                <li><a href="problemList">Problem List</a></li>
-                                <li><a href="allergies">Allergies</a></li>
-                <li><a href="#section4">Immunization Record</a></li>
-                <li><a href="#section3">Well Child Check</a></li>
-                <li><a href="#section5">Testing</a></li>
-                <li><a href="#section6">Growth Charts</a></li>
-                <li><a href="#section7">Nurse Notes</a></li>
-                <li><a href="#section8">Scans</a></li>
+                 <li><a href="#section2">Social History</a></li>
+                 <li><a href="problemList">Problem List</a></li>
+                 <li><a href="allergies">Allergies</a></li>
 
+                 <li><a href="#section4">Immunization Record</a></li>
+                 <li><a href="#section3">Well Child Check</a></li>
+                 <li><a href="#section5">Testing</a></li>
+                 <li><a href="#section6">Growth Charts</a></li>
+                 <li><a href="#section7">Nurse Notes</a></li>
+                 <li><a href="#section8">Scans</a></li>
+               </li>
 
-              </ul>
-            </div>
-          </nav>
-          <div class="col-sm-10">   
-
-            <div class = "card header">
-             <div class = "topRight">
-              <p> Welcome, "User Name"  | </p>
-              <button> Logout </button>
-            </div>
-
-            <div class = "Rplus header"> R+ Childrens </div>
-
-            <div class = "hdrBtns header">
-             <a href="#Pharmacy">Pharmacy</a>
-             <a href="#AllPatients">All Patients</a>
-             <a href="#AddPatient">Add Patient</a>
+             </ul>
            </div>
-
          </div>
-         <div class = "card box summary"> 
-          <h3> Patient Summary </h3>
+       </nav>
+       <div class="col-sm-10">   
 
+        <div class = "card header">
+         <div class = "topRight">
+          <p> Welcome, "User Name"  | </p>
+          <button> Logout </button>
         </div>
-        <div id= "updates" class = "card box">
-          <h3> Upcoming Updates </h3>
-          <div class="row">
-            <div class="col-sm">
-              12-21-2001
-            </div>
-            <div class="col-sm">
-              Do the well child check
-            </div>
-            <div class="col-sm">
-              Overdue
-            </div>
 
-          </div>
+        <div class = "Rplus header"> R+ Childrens </div>
 
-          <div class="row">
-            <div class="col-sm">
-              12-21-2001
-            </div>
-            <div class="col-sm">
-              Do the well child check
-            </div>
-            <div class="col-sm">
-              Overdue
-            </div>
-
-          </div>
-
-        </div>
-        <div id="allergies" class="card box">
-          <h3> Allergies </h3>
-          <div class="row">
-            <div class="col-sm">
-              Peanuts
-            </div>
-            <div class="col-sm">
-              Not very severe
-            </div>
-            <div class="col-sm">
-            </div>
-
-          </div>
-        </div>
-        <div id="socialHistory" class="card box">
-         <h3> Brief Social History </h3>
-         <p> Mother left her on the side of the street </p>
+        <div class = "hdrBtns header">
+         <a href="#Pharmacy">Pharmacy</a>
+         <a href="#AllPatients">All Patients</a>
+         <a href="#AddPatient">Add Patient</a>
        </div>
 
-
-       <div class="container" id='patientCards'></div>
-
      </div>
+     <div class = "card box summary"> 
+      <h3> Patient Summary </h3>
 
+    </div>
+    <div id= "updates" class = "card box">
+      <h3> Upcoming Updates </h3>
+      <div class="row">
+        <div class="col-sm">
+          12-21-2001
+        </div>
+        <div class="col-sm">
+          Do the well child check
+        </div>
+        <div class="col-sm">
+          Overdue
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+          12-21-2001
+        </div>
+        <div class="col-sm">
+          Do the well child check
+        </div>
+        <div class="col-sm">
+          Overdue
+        </div>
+
+      </div>
+
+    </div>
+    <div id="allergies" class="card box">
+      <h3> Allergies </h3>
+      <div class="row">
+        <div class="col-sm">
+          Peanuts
+        </div>
+        <div class="col-sm">
+          Not very severe
+        </div>
+        <div class="col-sm">
+        </div>
+
+      </div>
+    </div>
+    <div id="socialHistory" class="card box">
+     <h3> Brief Social History </h3>
+     <p> Mother left her on the side of the street </p>
    </div>
+
+
 
  </div>
 
 </div>
+
+
 
 </body>
 
@@ -232,9 +264,8 @@
 
   var elements = document.querySelectorAll('.sticky');
   Stickyfill.add(elements);
+
             // Initial Page Load
-
-
             $.ajax({
               type: 'POST',
               url: '/getPatientKeys',
@@ -247,28 +278,14 @@
                 getPatientData(result.patient);
               }
             });
-
-
-
-
-            $.ajax({
-              type: 'POST',
-              url: '/getPatientKeys',
-              data: {
-                search: '',
-                field: 'lastName',
-              },
-              success: function(result) {
-                patients = result.patient;
-                updatePatientKeys(result.patient);
-              }
-            });
-
           });
 
 
 
- var getPatientData = function(patient) {
+// Input: patient- contains the particular patient's data
+// Responsible for posting the patient's data to the webpage
+var getPatientData = function(patient) {
+  // Temporary objects used to imitate the data coming from patient
   var temp = patient;
   var updates = [{date: '12-12-12', note: 'Do the test', status: 'Overdue'}]
   var allergies = [{item: 'dairy', severity: 'Mild', note: 'Avoid diary products'}]
@@ -278,167 +295,87 @@
   var date = new Date(2018,2,12);
   var i = 1;
   var patient = patient[i];
+
+  // Display sidebar content
   $('#name').text(patient.firstName + ' ' + patient.lastName);
-  $('#ageDOB').text('Age: ' + getAge(patient.birthdate) + ',  ' + 'DOB: ' + patient.birthdate)
-  
-  $('#sexWH').text('Sex: ' +  'female' + ',  Weight: ' + patient.weight + " kgs,  Height: " + patient.height + " cm" );
-  $('#allergiesSide').text('Allergies: ' + allergies[0].item );
+  $('#ageSex').text(getAge(patient.birthdate) + ', ' + 'F' ); //paitient.sex
+  $('#dob').text(patient.birthdate);
+  $('#heightWeight').text(patient.height + " cm, " + patient.weight + " kgs");
+  $('#allergiesSide').text('Allergies: ' + allergies[0].allergen );
 
-  var updates = '<div class="row"> <div class="col-sm">' + updates[0].date + 
-  '</div> <div class="col-sm">' + updates[0].note + 
-  '</div><div class="col-sm">' + updates[0].status + '</div> </div>'
-  $('#updates').append(updates);
+// Display updates content
+var updates = '<div class="row"> <div class="col-sm">' + updates[0].date + 
+'</div> <div class="col-sm">' + updates[0].note + 
+'</div><div class="col-sm">' + updates[0].status + '</div> </div>'
+$('#updates').append(updates);
 
-  var allergies =  '<div class="row"> <div class="col-sm">' + allergies[0].item + 
-  '</div> <div class="col-sm">' + allergies[0].severity + 
-  '</div><div class="col-sm">' + allergies[0].note + '</div> </div>'
-  $('#allergies').append(allergies);
+// Display allergies content
+var allergies =  '<div class="row"> <div class="col-sm">' + allergies[0].item + 
+'</div> <div class="col-sm">' + allergies[0].severity + 
+'</div><div class="col-sm">' + allergies[0].note + '</div> </div>'
+$('#allergies').append(allergies);
 
-  var socialHistory = '<p>' + socialHistory + ' </p>'
-  $('#socialHistory').append(socialHistory);
-
-  patient = temp;
-  cards += '<div class="card">';
-  cards += '<div class="card-body">';
-  cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
-  cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
-  cards += '<p class="card-text">';
-  cards += 'Birthdate: ' + patient[i].birthdate + ', ';
-  cards += 'Age: ' + getAge(date) + ', ';
-                        // CALCULATE AGE FROM BIRTHDATE HERE
-                        cards += 'Height: ' + patient[i].height + ', ';
-                        cards += 'Weight: ' + patient[i].weight + ', ';
-                        cards += 'Father: ' + patient[i].father + ', ';
-                        cards += 'Mother: ' + patient[i].mother + ', ';
-                        cards += '</p>';
-                        cards += '<a href="/#'+ patient[i].id + '" class="card-link">Card link</a>';
-                        cards += '</div>';
-                        cards += '</div>';
-                        
-                      }
-                   //   document.getElementById('patientCards').innerHTML = cards;
+// Display social history content
+var socialHistory = '<p>' + socialHistory + ' </p>'
+$('#socialHistory').append(socialHistory);
 
 
 
-
-                   function getAge(fromdate, todate){
-                    if(todate) todate= new Date(todate);
-                    else todate= new Date();
-
-                    var age= [], fromdate= new Date(fromdate),
-                    y= [todate.getFullYear(), fromdate.getFullYear()],
-                    ydiff= y[0]-y[1],
-                    m= [todate.getMonth() + 1, fromdate.getMonth()],
-                    mdiff= m[0]-m[1],
-                    d= [todate.getDate(), fromdate.getDate()],
-                    ddiff= d[0]-d[1];
-
-                    if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
-                    if(mdiff<0) mdiff+= 12;
-                    if(ddiff<0){
-                      fromdate.setMonth(m[1]+1, 0);
-                      ddiff= fromdate.getDate()-d[1]+d[0];
-                      --mdiff;
-                    }
-                    w = Math.floor(ddiff/7);
-                    ddiff = ddiff % 7;
-                  // 3 or older -> show year
-                  if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
-                  else if (ydiff> 0) {
-                    // Over a year -> show year and month
-                    age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
-                    if(mdiff> 0) age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
-                    // Less than a year -> show month and day
-                  } else if (mdiff> 3) {
-                   age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
-                   if (w> 0) age.push(w+ ' week' + (w> 1? 's':''));
-                 } else if (mdiff>0) {
-                  age.push(mdiff+ ' month'+(mdiff> 1? 's ':' '));
-                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
-                } else {
-                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
-                  if(ddiff> 0) age.push(ddiff+ ' day'+(ddiff> 1? 's':''));
-                }
-
-                if(age.length>1) age.splice(age.length-1,0,' and ');    
-                return age.join('');
-              }
+}
 
 
 
-              var updatePatientKeys = function(patient) {
-                console.log('here:' + patient);
-                var cards = "";
-                var date = new Date(2018,2,12);
+// Input: fromdate: date of birth. Todate: current date
+// Calculates age in years, months, weeks, days and returns it as a string
+function getAge(fromdate, todate){
+  if(todate) todate= new Date(todate);
+  else todate= new Date();
 
-                for(var i = 0; i < patient.length; i++) {
-                  cards += '<div class="card">';
-                  cards += '<div class="card-body">';
-                  cards += '<h5 class="card-title">' + patient[i].lastName + ', ' +  patient[i].firstName +  '</h5>';
-                  cards += '<h6 class="card-subtitle mb-2 text-muted">Given Name: '+patient[i].givenName+', '+ patient[i].sex+'</h6>';
-                  cards += '<p class="card-text">';
-                  cards += 'Birthdate: ' + patient[i].birthdate + ', ';
-                  cards += 'Age: ' + getAge(date) + ', ';
-                        // CALCULATE AGE FROM BIRTHDATE HERE
-                        cards += 'Height: ' + patient[i].height + ', ';
-                        cards += 'Weight: ' + patient[i].weight + ', ';
-                        cards += 'Father: ' + patient[i].father + ', ';
-                        cards += 'Mother: ' + patient[i].mother + ', ';
-                        cards += '</p>';
-                        cards += '<a href="/#'+ patient[i].id + '" class="card-link">Card link</a>';
-                        cards += '</div>';
-                        cards += '</div>';
-                      }
-                      document.getElementById('patientCards').innerHTML = cards;
-                    };
+  var age= [], fromdate= new Date(fromdate),
+  y= [todate.getFullYear(), fromdate.getFullYear()],
+  ydiff= y[0]-y[1],
+  m= [todate.getMonth() + 1, fromdate.getMonth()],
+  mdiff= m[0]-m[1],
+  d= [todate.getDate(), fromdate.getDate()],
+  ddiff= d[0]-d[1];
 
+  if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
+  if(mdiff<0) mdiff+= 12;
+  if(ddiff<0){
+    fromdate.setMonth(m[1]+1, 0);
+    ddiff= fromdate.getDate()-d[1]+d[0];
+    --mdiff;
+  }
+  w = Math.floor(ddiff/7);
+  ddiff = ddiff % 7;
+  // 3 or older -> show year
+  if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
+  else if (ydiff> 0) {
+ // Over a year -> show year and month
+ age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
+ if(mdiff> 0) age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
+ // Over 3 months, less than a year -> show month and week
+} else if (mdiff> 3) {
+ age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
+ if (w> 0) age.push(w+ ' week' + (w> 1? 's':''));
+   // Display month and week
+ } else if (mdiff>0) {
+  age.push(mdiff+ ' month'+(mdiff> 1? 's ':' '));
+  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
+} else {
+ // Display week and day
+ if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
+ if(ddiff> 0) age.push(ddiff+ ' day'+(ddiff> 1? 's':''));
+}
 
-
-                    function getAge(fromdate, todate){
-                      if(todate) todate= new Date(todate);
-                      else todate= new Date();
-
-                      var age= [], fromdate= new Date(fromdate),
-                      y= [todate.getFullYear(), fromdate.getFullYear()],
-                      ydiff= y[0]-y[1],
-                      m= [todate.getMonth() + 1, fromdate.getMonth()],
-                      mdiff= m[0]-m[1],
-                      d= [todate.getDate(), fromdate.getDate()],
-                      ddiff= d[0]-d[1];
-
-                      if(mdiff < 0 || (mdiff=== 0 && ddiff<0))--ydiff;
-                      if(mdiff<0) mdiff+= 12;
-                      if(ddiff<0){
-                        fromdate.setMonth(m[1]+1, 0);
-                        ddiff= fromdate.getDate()-d[1]+d[0];
-                        --mdiff;
-                      }
-                      w = Math.floor(ddiff/7);
-                      ddiff = ddiff % 7;
-                  // 3 or older -> show year
-                  if (ydiff > 2) age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
-                  else if (ydiff> 0) {
-                    // Over a year -> show year and month
-                    age.push(ydiff+ ' year'+(ydiff> 1? 's ':' '));
-                    if(mdiff> 0) age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
-                    // Less than a year -> show month and day
-                  } else if (mdiff> 3) {
-                   age.push(mdiff+ ' month'+(mdiff> 1? 's':''));
-                   if (w> 0) age.push(w+ ' week' + (w> 1? 's':''));
-                 } else if (mdiff>0) {
-                  age.push(mdiff+ ' month'+(mdiff> 1? 's ':' '));
-                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
-                } else {
-                  if(w> 0) age.push(w+ ' week'+(w> 1? 's':''));
-                  if(ddiff> 0) age.push(ddiff+ ' day'+(ddiff> 1? 's':''));
-                }
-
-                if(age.length>1) age.splice(age.length-1,0,' and ');    
-                return age.join('');
-              }
+if(age.length>1) age.splice(age.length-1,0,' and ');    
+return age.join('');
+}
 
 
-            </script>
-          </body>
-          </html>
+
+
+</script>
+</body>
+</html>
 
