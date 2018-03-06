@@ -194,30 +194,17 @@ $('#age').text('Age: ' + getAge(birthdateNew));
 $(document).ready(function(){  
   var elements = document.querySelectorAll('.sticky');
   Stickyfill.add(elements);
-  // Initial Page Load
+  // so basically we just need to make post requests here that 
+  // pass in the patient Id and then we can render the information on the page
   /*
     $.ajax({
       type: 'POST',
-      url: '/getPatientKeys',
+      url: '/getAllergyInfo', or something like this
       data: {
-        search: '',
-        field: 'lastName',
+        id: patientId,
       },
-      success: function(result) {
-        patients = result.patient;
-        getPatientData(result.patient);
-      }
-    });
-    $.ajax({
-      type: 'POST',
-      url: '/getPatientKeys',
-      data: {
-        search: '',
-        field: 'lastName',
-      },
-      success: function(result) {
-        patients = result.patient;
-        updatePatientKeys(result.patient);
+      success: function(data) {
+        renderData(data);
       }
     });
     */
