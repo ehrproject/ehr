@@ -24,6 +24,9 @@ var getAllergiesPage = function(req, res) {
 var getProblemList = function(req, res) {
   res.render('problemList.ejs')
 }
+var getImmunizationPage = function(req, res) {
+  res.render('immunizationPage.ejs')
+}
 
 var addAllergy = function (req, res) {
 // console.log("add allergy: " + req.body)
@@ -100,6 +103,7 @@ get_main: getMain,
   get_login_page: getLoginPage,
   get_problem_list: getProblemList,
   get_allergies: getAllergiesPage,
+  get_immunization_page: getImmunizationPage,
   submit_patient: submitPatient,
   get_patient_keys: getPatientKeys,
   get_patient_search: getSearchPatients,
