@@ -124,6 +124,35 @@
     }
 
 
+.top-nav {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px;
+
+  }
+     .label{
+    display: inline-block;
+    font-weight: bold;
+  }
+  #R-plus{
+    font-size: 35px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: green;
+  }
+  #Childrens{
+    font-size: 35px
+  }
+  #pharmacy{
+    margin-left: 80px;
+  }
+
+ .topRight {
+      position: absolute;
+      top: 5px;
+      right:10px;
+
+    }
   </style>
   <title>Patient Page</title>
 
@@ -181,18 +210,21 @@
        <div class="col-lg">   
 
         <div class = "card header">
-         <div class = "topRight">
-          <p> Welcome, "User Name"  | </p>
-          <button> Logout </button>
-        </div>
+        
+            <div class = "card header" id = "topHead">
+             <div class = "topRight">
+              <a> User Name  | </a>
+              <button class="btn btn-outline-success"> Logout </button>
+            </div>
 
-        <div class = "Rplus header"> R+ Childrens </div>
-
-        <div class = "hdrBtns header">
-         <a href="#Pharmacy">Pharmacy</a>
-         <a href="#AllPatients">All Patients</a>
-         <a href="#AddPatient">Add Patient</a>
-       </div>
+            <div>
+              <p class = "label" id = "R-plus"> R+ </p>
+              <p class = "label" id = "Childrens">Childrens</p>
+              <a href="#Pharmacy" class = "top-nav" id = "pharmacy">Pharmacy</a>
+              <a href="#AllPatients" class = "top-nav" id = "rec-pat">Recent Patients</a>
+              <a href="../patientSearch.ejs" class = "top-nav" id = "search-pat">Search Patients</a>
+            </div>
+         </div>
 
      </div>
 
@@ -551,6 +583,12 @@ function getAge(fromdate, todate){
 if(age.length>1) age.splice(age.length-1,0,' and ');    
 return age.join('');
 }
+
+
+
+
+
+
 
 
 </script>
