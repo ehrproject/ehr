@@ -46,6 +46,15 @@ app.get('/patient/:id', routes.get_patient);
 app.post('/form', routes.submit_patient);
 app.post('/getPatientKeys', routes.get_patient_keys);
 
+app.get('/patientPage', routes.get_patient_page);
+app.get('/problemList', routes.get_problem_list);
+app.get('/allergies', routes.get_allergies);
+app.get('/login', routes.get_login_page);
+app.post('/form', routes.submit_patient);
+app.post('/addAllergy', routes.add_allergy);
+app.post('/addChronMed', routes.add_chron_med);
+app.post('/addAcuteProb', routes.add_acute_prob);
+
 /* Run the server */
 console.log('Author: Connor Chong (conchong)');
 app.listen(8080);
