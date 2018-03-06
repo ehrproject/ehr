@@ -18,44 +18,18 @@ app.use(express.static('static'));
    between app.get and app.post; normal web requests are GETs, but
    POST is often used when submitting web forms ('method="post"'). */
 
-   
-// GET requests
-// var getIndex = require('./routes/getIndex');                    // (GET) Shows Home page
-// var getForm = require('./routes/getForm');                      // (GET) Shows the Patient Input Form
-// var getSearchPatients = require('./routes/getSearchPatients');  // (GET) Shows the Search Page
-
-// var seePatient = require('./routes/seePatient');                // (GET) Sees the Patient Page of a certian Patient ID
-
-// // POST requests
-// var submitPatient = require('./routes/submitPatient');          // (POST) Add a new Patient to the database
-// var findPatientKeys = require('./routes/findPatientKeys');      // (POST) Search Patient by Last Name
-
-// app.use
-// app.use('/', getIndex);
-// app.use('/form', getForm);
-// app.use('/searchPatients', getSearchPatients);
-// app.use('/patient', seePatient);
-// app.use('/submitPatient', submitPatient);
-// app.use('/findPatientKeys', findPatientKeys);
-
-
 app.get('/', routes.get_main);
 app.get('/patientSearch', routes.get_patient_search);
-app.get('/form', routes.get_form);
-app.get('/patient/:id', routes.get_patient);
-app.post('/form', routes.submit_patient);
-app.post('/getPatientKeys', routes.get_patient_keys);
-
-app.get('/patientPage', routes.get_patient_page);
+app.get('/patientPage/:id', routes.get_patient_page);
 app.get('/problemList', routes.get_problem_list);
 app.get('/allergies', routes.get_allergies);
-app.get('/immunization', routes.get_immunization_page)
-app.get('/login', routes.get_login_page);
-app.post('/form', routes.submit_patient);
-app.post('/addAllergy', routes.add_allergy);
-app.post('/addChronMed', routes.add_chron_med);
-app.post('/addAcuteProb', routes.add_acute_prob);
+app.get('/weight', routes.get_weight_page);
+app.get('/form', routes.get_form);
 
+app.post('/getAllWeights', routes.get_all_weights);
+app.post('/weight', routes.submit_weight);
+app.post('/form', routes.submit_patient);
+app.post('/getPatientKeys', routes.get_patient_keys);
 /* Run the server */
 console.log('Author: Connor Chong (conchong)');
 app.listen(8080);
