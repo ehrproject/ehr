@@ -179,13 +179,11 @@
         <nav class="col-sm-2 sidebar">
           <div class = "sidebar sticky " >
             <div class = "basicInfo"> 
-              <h2 id = "name">  </h2>
-              <br>
-              <p id="ageSex"></p>
-              <p id="dob"></p>
-              <p id="heightWeight"></p>
-              <br>
-              <p id="allergiesSide"></p>
+              <h2 id = "name"><%= data.firstName%> <%= data.lastName%></h2>
+
+              <p id="ageDOB"> Age: ###, DOB: <%= data.birthdate%></p>
+              <p id="sexWH"> <%= data.sex%>, <%= data.weight%> kg, <%= data.height%> cm </p>
+              <p id="allergiesSide"> Shellfish </p>
 
             </div>
             <div class="links">
@@ -292,7 +290,8 @@
 
 
  $(document).ready(function(){
-
+  var patientID= JSON.parse('<%=data.id%>');
+  console.log('patientID here' + patientID);
 
   var elements = document.querySelectorAll('.sticky');
   Stickyfill.add(elements);
