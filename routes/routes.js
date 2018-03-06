@@ -81,25 +81,24 @@ var getPatientKeys = function (req, res) {
       }
   });
 }
-
 var getPatient = function(req, res) {
-  var id = decodeURI(req.params.id);
-  patientsDB.getPatientById(id, function(data, err) {
-    if(err) {
-      console.log('error here');
-      console.log(err);
-    } else {
-      var data1 = data[0];
-      res.render('patient.ejs', {data: data1});
-    }
-  });
-};
+    var id = decodeURI(req.params.id);
+    console.log(id);
+    patientsDB.getPatientById(id, function(data, err) {
+      if(err) {
+        console.log(err);
+      } else {
+        res.render('patientPage.ejs', {data: data[0]});
+      }
+    });
+  };
+  
 
 // this method handles the get_main request from app.js and reroutes it to the getMain function above
 var routes = { 
 get_main: getMain,
   get_form:getForm,
-  get_patient_page: getPatientPage,
+  get_patient_page: getPatient,
   get_login_page: getLoginPage,
   get_problem_list: getProblemList,
   get_allergies: getAllergiesPage,
