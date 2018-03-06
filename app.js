@@ -49,6 +49,7 @@ app.post('/getPatientKeys', routes.get_patient_keys);
 app.get('/patientPage', routes.get_patient_page);
 app.get('/problemList', routes.get_problem_list);
 app.get('/allergies', routes.get_allergies);
+app.get('/immunization', routes.get_immunization_page)
 app.get('/login', routes.get_login_page);
 app.post('/form', routes.submit_patient);
 app.post('/addAllergy', routes.add_allergy);
